@@ -20,6 +20,30 @@ void PrintTree(TreeNode* Root)
 	}
 }
 
+void printVector(std::vector<int> A)
+{
+	for (size_t i = 0; i < A.size(); i++)
+	{
+		std::cout << A.at(i) << " ";
+	}
+
+	std::cout << "\nThe size of the vector is: " << A.size() << "\n";
+}
+
+void MergeSort(std::vector<int>& A, int const begin, int const end)
+{
+	if (begin >= end)
+	{
+		return;
+	}
+
+	int mid = begin + (end - begin) / 2;
+	MergeSort(A, begin, mid);
+	MergeSort(A, mid + 1, end);
+	//Merge(
+}
+
+
 int main()
 {
 	//Creates the root of the Tree 
@@ -59,6 +83,9 @@ int main()
 		std::cout << NewTree->ChildrenVector.at(i)->Data << "\n";
 	}
 
+	std::vector<int> MergeVector{ 2, 5, 3 ,6, 10, 22, 15 };
+
+	printVector(MergeVector);
 
 	return 0;
 }
