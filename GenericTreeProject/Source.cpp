@@ -52,13 +52,11 @@ int main()
 
 	TreeNode* NewTree = new TreeNode();
 
-	NewTree->TakeInput();
+	NewTree = NewTree->LevelWiseTakeInput();
 
 	for (size_t i = 0; i < NewTree->ChildrenVector.size(); i++)
 	{
-		NewTree->ChildrenVector.at(i)->PrintElement();
-
-		NewTree->ChildrenVector.at(0)->ChildrenVector.at(i)->PrintElement();
+		std::cout << NewTree->ChildrenVector.at(i)->Data << "\n";
 	}
 
 

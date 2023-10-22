@@ -1,6 +1,7 @@
 #pragma once
 #include <vector>
 #include <iostream>
+#include <queue>
 
 class TreeNode
 {
@@ -14,7 +15,11 @@ public:
 
 	void PrintElement();
 
+	void LevelPrintTree();
+
 	TreeNode* TakeInput();
+
+	TreeNode* LevelWiseTakeInput();
 
 	~TreeNode();
 
