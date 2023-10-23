@@ -15,7 +15,7 @@ public:
 
 	void PrintElement();
 
-	void LevelPrintTree();
+	void LevelPrintTree(TreeNode* Root);
 
 	TreeNode* TakeInput();
 

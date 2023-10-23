@@ -40,7 +40,16 @@ void MergeSort(std::vector<int>& A, int const begin, int const end)
 	int mid = begin + (end - begin) / 2;
 	MergeSort(A, begin, mid);
 	MergeSort(A, mid + 1, end);
-	//Merge(
+	//Merge(A, begin, mid, end);
+}
+
+void Merge(std::vector<int>& A, int const Left, int const Mid, int const Right)
+{
+	int const SubArrayOne = Mid - Left + 1;
+	int const SubArrayTwo = Right - Mid;
+
+	auto* LeftVector = new int[SubArrayOne];
+	auto* RightVector = new int[SubArrayTwo];
 }
 
 
@@ -78,14 +87,11 @@ int main()
 
 	NewTree = NewTree->LevelWiseTakeInput();
 
-	for (size_t i = 0; i < NewTree->ChildrenVector.size(); i++)
-	{
-		std::cout << NewTree->ChildrenVector.at(i)->Data << "\n";
-	}
+	NewTree->LevelPrintTree(NewTree);
 
-	std::vector<int> MergeVector{ 2, 5, 3 ,6, 10, 22, 15 };
+	//std::vector<int> MergeVector{ 2, 5, 3 ,6, 10, 22, 15 };
 
-	printVector(MergeVector);
+	//printVector(MergeVector);
 
 	return 0;
 }

@@ -15,9 +15,31 @@ void TreeNode::PrintElement()
 	std::cout << "The element of this node is: " << Data << "\n";
 }
 
-void TreeNode::LevelPrintTree()
+void TreeNode::LevelPrintTree(TreeNode* Root)
 {
+	std::queue<TreeNode*> PrintQueue;
 
+	PrintQueue.push(Root);
+
+	while (!PrintQueue.empty())
+	{
+		TreeNode* front = PrintQueue.front();
+		PrintQueue.pop();
+
+		std::cout << front->Data << ": ";
+
+		for (size_t i = 0; i < front->ChildrenVector.size(); i++)
+		{
+			std::cout << front->ChildrenVector.at(i)->Data << ", ";
+		}
+		std::cout << "\n";
+
+		for (size_t i = 0; i < front->ChildrenVector.size(); i++)
+		{
+			PrintQueue.push(front->ChildrenVector.at(i));
+		}
+
+	}
 }
 
 //Good for understanding the concept but bad in practice -- User must keep track of recursion 
@@ -68,7 +90,7 @@ TreeNode* TreeNode::LevelWiseTakeInput()
 		for (size_t i = 0; i < ChildrenNumber; i++)
 		{
 			int ChildData;
-			std::cout << "Enter a data value for this child: " << front->Data;
+			std::cout << "Enter a data value for this child: " << front->Data << "\n";
 			std::cin >> ChildData;
 			TreeNode* ChildNode = new TreeNode(ChildData);
 			InputQueue.push(ChildNode);
