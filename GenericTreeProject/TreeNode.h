@@ -27,6 +27,10 @@ public:
 
 	void PreOrderTraversal(TreeNode* Root);
 
+	void PostOrderTraversal(TreeNode* Root);
+
+	void DeleteTree(TreeNode* Root);
+
 	TreeNode* TakeInput();
 
 	TreeNode* LevelWiseTakeInput();

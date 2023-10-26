@@ -157,6 +157,40 @@ void TreeNode::PreOrderTraversal(TreeNode* Root)
 
 }
 
+void TreeNode::PostOrderTraversal(TreeNode* Root)
+{
+	if (Root != NULL)
+	{
+		for (size_t i = 0; i < Root->ChildrenVector.size(); i++)
+		{
+			PreOrderTraversal(Root->ChildrenVector.at(i));
+		}
+		std::cout << Root->Data;
+	}
+	else
+	{
+		std::cout << "Tree is empty!\n";
+	}
+
+}
+
+void TreeNode::DeleteTree(TreeNode* Root)
+{
+	if(Root != NULL)
+	{
+		for (size_t i = 0; i < Root->ChildrenVector.size(); i++)
+		{
+			DeleteTree(Root->ChildrenVector.at(i));
+		}
+		delete Root;
+	}
+	else
+	{
+		std::cout << "Your tree is empty!\n";
+	}
+
+}
+
 //Good for understanding the concept but bad in practice -- User must keep track of recursion 
 TreeNode* TreeNode::TakeInput()
 {
@@ -218,5 +252,8 @@ TreeNode* TreeNode::LevelWiseTakeInput()
 
 TreeNode::~TreeNode()
 {
-
+	for (size_t i = 0; i < ChildrenVector.size(); i++)
+	{
+		delete ChildrenVector.at(i);
+	}
 }
