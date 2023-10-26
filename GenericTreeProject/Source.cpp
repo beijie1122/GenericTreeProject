@@ -89,6 +89,20 @@ int main()
 
 	NewTree->LevelPrintTree(NewTree);
 
+	int Count = NewTree->CountNodes(NewTree);
+
+	std::cout << "The amount of nodes in the tree is: " << Count << "\n";
+
+	int TreeHeight = NewTree->NumberOfLevels(NewTree);
+
+	std::cout << "The maximum height of the tree is: " << TreeHeight << "\n";
+
+	NewTree->PrintAtKLevel(NewTree, 2);
+
+	std::cout << "The Number of Leaf Nodes is: " << NewTree->CountLeafNodes(NewTree) << "\n";
+
+	NewTree->PreOrderTraversal(NewTree);
+
 	//std::vector<int> MergeVector{ 2, 5, 3 ,6, 10, 22, 15 };
 
 	//printVector(MergeVector);

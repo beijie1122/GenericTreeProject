@@ -17,6 +17,16 @@ public:
 
 	void LevelPrintTree(TreeNode* Root);
 
+	int CountNodes(TreeNode* Root);
+
+	int NumberOfLevels(TreeNode* Root);
+
+	void PrintAtKLevel(TreeNode* Root, int Level);
+
+	int CountLeafNodes(TreeNode* Root);
+
+	void PreOrderTraversal(TreeNode* Root);
+
 	TreeNode* TakeInput();
 
 	TreeNode* LevelWiseTakeInput();

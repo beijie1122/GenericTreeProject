@@ -42,6 +42,121 @@ void TreeNode::LevelPrintTree(TreeNode* Root)
 	}
 }
 
+int TreeNode::CountNodes(TreeNode* Root)
+{
+
+	int Count = 1;
+
+	if (Root != NULL)
+	{
+		
+		for (size_t i = 0; i < Root->ChildrenVector.size(); i++)
+		{
+			Count += CountNodes(Root->ChildrenVector[i]);
+		}
+
+		return Count;
+	}
+	else
+	{
+		return 0;
+	}
+
+
+
+}
+
+int TreeNode::NumberOfLevels(TreeNode* Root)
+{
+	int Levels = 0;
+
+	if (Root != NULL)
+	{
+		for (size_t i = 0; i < Root->ChildrenVector.size(); i++)
+		{
+			Levels = std::max(Levels, NumberOfLevels(Root->ChildrenVector[i]));
+		}
+		
+		return Levels + 1;
+		
+	}
+	else
+	{
+		return -1;
+	}
+}
+
+void TreeNode::PrintAtKLevel(TreeNode* Root, int Level)
+{
+	if (Root != NULL)
+	{
+		if (Level == 0)
+		{
+			std::cout << Root->Data << "\n";
+			return;
+		}
+		for (size_t i = 0; i < Root->ChildrenVector.size(); i++)
+		{
+			PrintAtKLevel(Root->ChildrenVector.at(i), Level-1);
+		}		
+	}
+	else
+	{
+		//Edge Case to avoid segmentation fault
+		std::cout << "Your Tree Is Empty!\n";
+		return;
+	}
+
+
+}
+
+int TreeNode::CountLeafNodes(TreeNode* Root)
+{
+	int Count = 0;
+
+	if (Root == NULL)
+	{
+		return -1;
+	}
+	else
+	{
+		if (Root->ChildrenVector.size() == 0)
+		{
+			Count = 1;
+			return Count;
+		}
+		for (size_t i = 0; i < Root->ChildrenVector.size(); i++)
+		{
+			Count += CountLeafNodes(Root->ChildrenVector.at(i));
+		}
+
+
+		return Count;
+	}
+}
+
+void TreeNode::PreOrderTraversal(TreeNode* Root)
+{
+	if (Root != NULL)
+	{
+		std::cout << Root->Data << " ";
+
+		for (size_t i = 0; i < Root->ChildrenVector.size(); i++)
+		{
+			PreOrderTraversal(Root->ChildrenVector.at(i));
+		}
+	}
+	else 
+	{
+		std::cout << "Tree is empty!\n";
+	}
+	
+
+
+
+
+}
+
 //Good for understanding the concept but bad in practice -- User must keep track of recursion 
 TreeNode* TreeNode::TakeInput()
 {
